@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+
+
+>
+
+
+<h:outputText value="#{checker.checkListRefer()}"/>
+
+<h:body>
+
+
+    <h1>Обнаруженные ссылки</h1>
+
+
+    <h:dataTable  value="#{checker.referArrayList}" var="o">
+
+        <h:column>
+            <f:facet name="header">№ п/п</f:facet>
+            <h:outputText value="#{checker.referArrayList.indexOf(o)}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Имя ссылки</f:facet>
+            <h:outputText value="#{o.name}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">Адрес Ссылки</f:facet>
+            <p:menu>
+                <p:menuitem value="#{o.address}" url="#{o.address}"/>
+            </p:menu>
+        </h:column>
+
+    </h:dataTable>
+
+    <p:panel header="Очистить">
+        <h:form>
+            <p:commandButton id="clean" value="Очистить список/ вернуться к странице ввода" action="index"/>
+        </h:form>
+    </p:panel>
+
+</h:body>
+
+
+</html>
+
